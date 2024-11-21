@@ -140,9 +140,9 @@ public class ArtistRunner implements CommandLineRunner {
 			{
 				e.printStackTrace();
 			}*/
-		
-		//--------------------------------------------------------------------------------------------------------
-		//FindById method
+
+		// --------------------------------------------------------------------------------------------------------
+		// FindById method
 		/*try {
 			 artistservice.getArtistById(28);
 			 //for this method client no need of worrying about exceptions. thats why we had written in Service impl itself.
@@ -152,13 +152,36 @@ public class ArtistRunner implements CommandLineRunner {
 		{
 			e.printStackTrace();
 		}*/
+
+		// Second variation of findById()
+		/*	try {
+				Artist art = artistservice.fetchArtistById(28);
+				System.out.println(art);
+				
+				artistservice.fetchArtistById(28);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}*/
 		
-		//Second variation of findById()
+		//---------------------------------------------
+		
+		//updation : fully update
+		/*try {
+			Artist artist= new Artist(34,"Konidela Pawan Kalyan", "Politician/Hero", 10000000.0);
+			String msg = artistservice.registerOrUpdateArtist(artist);
+			System.out.println(msg);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}*/
+		
+		//updation : partial update
 		try {
-			/*Artist art = artistservice.fetchArtistById(28);
-			System.out.println(art);*/
-			
-			artistservice.fetchArtistById(28);
+			String msg = artistservice.hikeActorFeesByIdAndPercentage(330, 4);
+			System.out.println(msg);
 		}
 		catch(Exception e)
 		{

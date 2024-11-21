@@ -1,10 +1,8 @@
 package com.nt.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -98,5 +96,34 @@ public class ArtistServiceImpl implements ArtistManagmentService {
     	 Artist art= artrepo.findById(id).orElseThrow(()-> new IllegalArgumentException("Artist not available"));
     	 System.out.println(art);
     	 return art;
-}
+      }
+
+	@Override
+	public String registerOrUpdateArtist(Artist artist) {
+		artrepo.save(artist);
+		if(artrepo.existsById(artist.getAid()))
+			//if record found in table then updation happens
+			return artist.getAname()+" Artist is updated";
+		else
+			//not found means registration happens
+		return artist.getAname()+" Artist is registered";
+	}
+	
+	@Override
+	public String hikeActorFeesByIdAndPercentage(int id, double percentage) {
+		//load the artist
+		Optional<Artist>opt=artrepo.findById(id);
+		if(opt.isPresent())
+		{
+			//get entity object
+			Artist artist = opt.get();
+			//hike the fee by given percentage
+			artist.setAsal(artist.getAsal()+(artist.getAsal()*percentage/100.0f));
+			//save the updated record
+		    artrepo.save(artist);
+		    return artist.getAname()+" Artist is found and fees is modified!";
+		}
+		else
+		return "Artist not found for modification!";
+	}
 }

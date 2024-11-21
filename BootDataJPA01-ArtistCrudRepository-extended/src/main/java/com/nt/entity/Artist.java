@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Table(name="Artist_table")
 @NoArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Artist {
 
 	@Id

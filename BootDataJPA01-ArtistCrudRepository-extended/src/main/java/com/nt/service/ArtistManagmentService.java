@@ -30,4 +30,8 @@ public interface ArtistManagmentService {
 	//2nd variation using Artist
 	public Artist fetchArtistById(Integer id);
 	
+	//update:fullUpdate-save():partialUpdate-findById()
+	public String registerOrUpdateArtist(Artist artist);
+	//partialUpdate
+	public String hikeActorFeesByIdAndPercentage(int id,double percentage);
 }
