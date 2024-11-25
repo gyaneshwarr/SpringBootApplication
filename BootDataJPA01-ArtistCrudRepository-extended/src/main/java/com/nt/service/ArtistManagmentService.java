@@ -34,4 +34,13 @@ public interface ArtistManagmentService {
 	public String registerOrUpdateArtist(Artist artist);
 	//partialUpdate
 	public String hikeActorFeesByIdAndPercentage(int id,double percentage);
+	
+	//deleteAllById 
+	public String removeArtistsByIds(Iterable<Integer>ids);
+	
+	//deleteById
+	public String removeArtistById(Integer id);
+	
+	//deleteAll
+	public String removeAllArtists();
 }

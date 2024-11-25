@@ -1,5 +1,6 @@
 package com.nt.runners;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -179,15 +180,46 @@ public class ArtistRunner implements CommandLineRunner {
 		}*/
 		
 		//updation : partial update
-		try {
+		/*try {
 			String msg = artistservice.hikeActorFeesByIdAndPercentage(330, 4);
 			System.out.println(msg);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-		}
+		}*/
 
+		//deleteAllById method
+		/*try {
+			
+			System.out.println("artist count::"+artistservice.removeArtistsByIds(List.of(35,102,31,103,203)));
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}*/
+		
+		
+		//deleteById
+		/* try {
+			
+			System.out.println(artistservice.removeArtistById(53));
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}*/
+
+		//deleteAll()
+      try {	
+			System.out.println(artistservice.removeAllArtists());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

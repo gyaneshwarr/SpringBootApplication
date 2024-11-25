@@ -3,6 +3,7 @@ package com.nt.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -125,5 +126,49 @@ public class ArtistServiceImpl implements ArtistManagmentService {
 		}
 		else
 		return "Artist not found for modification!";
+	}
+	
+	//deleteAllById method
+	@Override
+	public String removeArtistsByIds(Iterable<Integer> ids) {
+	
+		Iterable<Artist>list=artrepo.findAllById(ids);
+		//only for counting the records
+		/*long count=StreamSupport.stream(list.spliterator(), false).count();*/
+		long count=0;
+		for(Artist artist:list) {
+			count++;}
+		 artrepo.deleteAllById(ids);
+		
+		return count+" : no. of artists are deleted";
+	}
+	
+	
+	//deleteById method
+	@Override
+	public String removeArtistById(Integer id) {
+	
+		Optional<Artist>opt=artrepo.findById(id);
+		if(opt.isPresent())
+		{
+			artrepo.deleteById(id);
+			return id+" artist found and deleted.";
+		}
+		else
+			return id+" artist is not found for deletion";
+	   }
+	
+	//deleteAll
+	@Override
+	public String removeAllArtists() {
+     
+		long count=artrepo.count();
+		if(count>0)
+		{
+			artrepo.deleteAll();
+			return count+" records are deleted.";
+		}
+		else
+		return "no records found to delete.";
 	}
 }
